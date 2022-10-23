@@ -5,7 +5,7 @@ html {
 body {
 }
 
-#window {
+#window_outer {
     width: 400px;
     padding: 20px 20px 20px 20px;
     justify-content: center;
@@ -21,20 +21,30 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.title-container {
-    height: 66px;
+#title_container {
     display: flex;
     flex-direction: row;
 }
-
-.title {
-    height: 45px;
+.titleOffset {
     flex: 10 1 0;
 }
-
-.titleOffset {
+#ticker {
+    height: 25px;
+    letter-spacing: 1px;
     flex: 5 1 0;
+
+    border-style: ridge;
+    border-width: .5px;
 }
+#ticker:hover {
+    outline: none;
+    border:1px solid #1c3060;
+}
+#ticker:focus {
+    outline: none;
+    border:1px solid #1c3060;
+}
+
 
 h1 {
     font-weight: normal;
@@ -50,20 +60,6 @@ h3 {
 
 #time {
     display: none;
-}
-
-.pending {
-    padding-right:30px;
-    display: inline;
-    color: dimgray;
-    font-size:10px;
-}
-
-.success {
-    padding-right:0;
-    display: inline;
-    color: green;
-    font-size:10px;
 }
 
 .flex-container {
@@ -89,23 +85,14 @@ h3 {
     flex: 2 1 0;
 }
 
-input:focus {
-    outline: none;
-    border:2px solid #1c3060;
-}
+
 
 #back, #submitButton {
     padding-right: 6px;
     padding-left: 6px;
 }
 
-input {
 
-    font-family: ".AppleSystemUIFont", sans-serif;
-    border-style: ridge;
-    border-width: .5px;
-    flex: 3 1 0;
-}
 
 .offset {
     /*border: 1px solid royalblue;*/
@@ -136,15 +123,6 @@ input {
 
 }
 
-.version {
-    font-family: sans-serif;
-    font-size: 10px;
-    text-align: right;
-    padding-bottom: 5px;
-    height: 0;
-    margin: 0;
-}
-
 .subtitle:hover, .button:hover, .info:hover {
     cursor:pointer;
     color: darkred;
@@ -161,41 +139,14 @@ input {
 
 }
 
-.pending:after {
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: bottom;
-    -webkit-animation: ellipsis steps(10,end) 1000ms infinite;
-    animation: ellipsis steps(10,end) 1000ms infinite;
-    content: "\2026"; /* ascii code for the ellipsis character */
-    height:15px;
-    width: 0;
-}
-
-@keyframes ellipsis {
-    to {
-        width: 20px;
-    }
-}
-
-@-webkit-keyframes ellipsis {
-    to {
-        width: 20px;
-    }
-}
-
 .info{
-    top: 50%;
-    left: 50%;
     transform: translate(0%, 0%);
-    margin: 26px 6px auto auto;
+    margin: 2px 4px auto auto;
 
     line-height: 24px;
     text-align: center;
     border: 2px solid #444;
     border-radius: 50% 50%;
-    align-content: center;
-
 
     cursor: default;
     flex: 1 1 0;
@@ -269,7 +220,7 @@ input {
     100% { opacity:100%; }
 }
 
-.window:before {
+#window_outer:before {
     position: absolute;
     width: 0;
     height: 2px;
@@ -280,7 +231,7 @@ input {
     transition: 100ms width ease 60300ms;
 }
 
-.window:after {
+#window_outer:after {
     position: absolute;
     width: 2px;
     height: 0;
@@ -291,7 +242,7 @@ input {
     transition: 100ms height ease 60200ms;
 }
 
-.window-inner:after {
+#window_inner:after {
     position: absolute;
     width: 0;
     height: 2px;
@@ -302,7 +253,7 @@ input {
     transition: 100ms width ease 60100ms;
 }
 
-.window-inner:before {
+#window_inner:before {
     position: absolute;
     width: 2px;
     height: 0;
@@ -313,22 +264,22 @@ input {
     transition: 100ms height ease 60000ms;
 }
 
-.window:hover:before {
+#window_outer:hover:before {
     width: calc(100% + 2px);
     transition: 100ms width ease 0ms;
 }
 
-.window:hover:after {
+#window_outer:hover:after {
     height: calc(100% + 2px);
     transition: 100ms height ease 100ms;
 }
 
-.window:hover .window-inner:after {
+#window_outer:hover #window_inner:after {
     width: calc(100% + 2px);
     transition: 100ms width ease 200ms;
 }
 
-.window:hover .window-inner:before {
+#window_outer:hover #window_inner:before {
     height: calc(100% + 2px);
     transition: 100ms height ease 300ms;
 }
