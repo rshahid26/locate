@@ -43,9 +43,15 @@ html {
 #widget_container {
     display: flex;
 }
-h2 {
-    font-size: 20px;
+.widget {
+    margin: 2px 0 2px 0;
+    font-size: 16px;
     font-weight: 400;
+
+    flex: 1 1 0;
+}
+h2 {
+
 }
 
 h1 {
