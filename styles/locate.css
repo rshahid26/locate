@@ -45,10 +45,13 @@ html {
 }
 .widget {
     margin: 2px 0 2px 0;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
 
     flex: 1 1 0;
+}
+#price {
+    flex: 2 1 0;
 }
 h2 {
 
