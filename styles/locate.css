@@ -46,9 +46,7 @@ input {
     flex: 10 1 0;
 }
 #widget_container {
-
 }
-
 #widget_container_right {
     float: right;
     width: 66%;
@@ -56,7 +54,6 @@ input {
     display: flex;
     text-align: center;
 }
-
 .widget {
     display: inline-block;
     font-size: 14px;
@@ -65,14 +62,12 @@ input {
     margin: 2px 0 2px 0;
     flex: 1 1 0;
 }
-#price {
-    flex: 1 1 100%;
-}
+
 #chart_container {
 
 }
 #chart {
-
+    width: 400px;
 }
 
 h3 {

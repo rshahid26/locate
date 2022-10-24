@@ -16,8 +16,8 @@ fetch(fred + appendKey, {method: "GET"})
         return raw;
     })
     .then(() => {
-        document.getElementById("chart").innerHTML =
-            '<canvas id="myChart" style="width:400px;max-width: inherit;"></canvas>';
+        document.getElementById("chart_container").innerHTML =
+            '<canvas id="chart" style="width:400px;"></canvas>';
         createChart(raw);
     })
     .catch(reject => console.log(reject));
@@ -31,7 +31,7 @@ function createChart(raw) {
         yValues.push(raw[i][1]);
     }
 
-    return new Chart("myChart", {
+    return new Chart("chart", {
         type: "line",
         data: {
             labels: xValues,
