@@ -14,17 +14,25 @@ document.getElementById("window_outer")
 
 function draggable(div) {
     //save position variables on mousedown
-    div.addEventListener("mousedown", e => {
+    div.addEventListener("mousedown", updatePosition)
 
-        let x = div.getBoundingClientRect().x;
-        let y = div.getBoundingClientRect().y;
-
-        console.log("(" + x + "," + y + ")");
-
-        div.onmousemove = () => {
-
-        }
+    div.addEventListener("mouseup", e => {
+        div.removeEventListener("mousedown", updatePosition);
     })
+}
+
+function updatePosition(e, div) {
+    let x = e.clientX;
+    let y = e.clientY;
+
+    console.log("(" + x + "," + y + ")");
+
+    div.onmousemove = () => {
+        console.log("x:" + e.clientX - x);
+        console.log("y:" + e.clientY - y);
+    }
+
+    return null;
 }
 
 draggable(document.getElementById("window_outer"));
