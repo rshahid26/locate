@@ -48,6 +48,18 @@ input {
 #widget_container {
     display: flex;
 }
+#widget_container_left {
+    display: flex;
+    flex: 2 1 0;
+}
+#widget_container_offset {
+    flex: 1 1 0;
+}
+#widget_container_right {
+    display: flex;
+    flex: 7 1 0;
+    text-align: right;
+}
 .widget {
     margin: 2px 0 2px 0;
     font-size: 14px;
