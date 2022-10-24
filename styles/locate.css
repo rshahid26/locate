@@ -46,26 +46,24 @@ input {
     flex: 10 1 0;
 }
 #widget_container {
-    display: flex;
+
 }
-#widget_container_left {
-    display: flex;
-    flex: 2 1 0;
-}
-#widget_container_offset {
-    flex: 1 1 0;
-}
+
 #widget_container_right {
+    float: right;
+    width: 66%;
+
     display: flex;
-    flex: 7 1 0;
-    text-align: right;
+    text-align: center;
 }
+
 .widget {
-    margin: 2px 0 2px 0;
+    display: inline-block;
     font-size: 14px;
     font-weight: 400;
 
-    flex: 1 1 100%;
+    margin: 2px 0 2px 0;
+    flex: 1 1 0;
 }
 #price {
     flex: 1 1 100%;
