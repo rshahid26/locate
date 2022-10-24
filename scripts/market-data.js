@@ -17,7 +17,7 @@ fetch(fred + appendKey, {method: "GET"})
     })
     .then(() => {
         document.getElementById("chart").innerHTML =
-            '<canvas id="myChart" style="width:800px;max-width: inherit;"></canvas>';
+            '<canvas id="myChart" style="width:400px;max-width: inherit;"></canvas>';
         createChart(raw);
     })
     .catch(reject => console.log(reject));

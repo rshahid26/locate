@@ -53,7 +53,10 @@ html {
 #price {
     flex: 2 1 0;
 }
-h2 {
+#chart_container {
+
+}
+#chart {
 
 }
 
