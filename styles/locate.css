@@ -21,24 +21,29 @@ html {
 #title_container {
     display: flex;
 }
-.titleOffset {
-    flex: 10 1 0;
+input {
+    min-width: 0;
 }
 #ticker {
     height: 25px;
     letter-spacing: 1px;
-    flex: 5 1 0;
+    flex: 2 1 0;
+
+    padding-left: 5px;
+
 
     border-style: ridge;
     border-width: .5px;
 }
-#ticker:hover {
-    outline: none;
-    border:1px solid #1c3060;
-}
 #ticker:focus {
     outline: none;
-    border:1px solid #1c3060;
+}
+.title {
+    font-weight: normal;
+    font-size: 16px;
+
+    margin: 5px 5px 5px 5px;
+    flex: 10 1 0;
 }
 #widget_container {
     display: flex;
@@ -48,10 +53,10 @@ html {
     font-size: 14px;
     font-weight: 400;
 
-    flex: 1 1 0;
+    flex: 1 1 100%;
 }
 #price {
-    flex: 2 1 0;
+    flex: 1 1 100%;
 }
 #chart_container {
 
@@ -60,9 +65,6 @@ html {
 
 }
 
-h1 {
-    font-weight: normal;
-}
 h3 {
     padding-right:30px;
     color: red;
@@ -153,10 +155,11 @@ h3 {
 }
 
 .info{
+    display: none;
     transform: translate(0%, 0%);
-    margin: 2px 4px auto auto;
+    margin: 0px 4px auto auto;
 
-    line-height: 24px;
+    line-height: 26px;
     text-align: center;
     border: 2px solid #444;
     border-radius: 50% 50%;

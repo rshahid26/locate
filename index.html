@@ -12,9 +12,10 @@
     <div id="window_inner">
 
         <div id="title_container">
-            <label for="ticker">
-                <input type="text" id="ticker" placeholder="HKD" name="ticker">
-            </label>
+
+            <input type="text" id="ticker" placeholder="HKD" name="ticker">
+
+            <h1 class="title">AMTD Digital Inc. ADR</h1>
 
             <div class="titleOffset"></div>
             <div class="info">
@@ -23,8 +24,12 @@
         </div>
 
         <div id="widget_container">
-            <h2 id="price" class="widget">89.64 (2.45%)</h2>
-            <h2 id="percent_change" class="widget"></h2>
+            <div id="price_widget_container">
+                <h2 id="price" class="widget">89.64</h2>
+                <h2 id="percent" class="widget">(2.45%)</h2>
+            </div>
+
+
             <h2 id="daily_high" class="widget">H 90.04</h2>
             <h2 id="daily_low" class="widget">L 89.58</h2>
             <h2 id="open" class="widget">O 89.96</h2>
