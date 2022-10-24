@@ -17,6 +17,12 @@ html {
     margin: 0 -50% 0 auto;
     transform: translate(-50%, -50%);
 }
+#window_outer:hover {
+    cursor: grab;
+}
+#window_outer:active {
+    cursor: grabbing;
+}
 
 #title_container {
     display: flex;
