@@ -2,7 +2,6 @@
 let tabPressed = false;
 
 document.addEventListener("keydown", (e) => {
-
         if (e.code === "Tab") {
 
             tabPressed = true;
@@ -23,12 +22,12 @@ function dragElement(div) {
             e = e || window.event;
             e.preventDefault();
 
-            // get the mouse cursor position at startup:
+            //get the mouse cursor position at startup
             x1 = e.clientX;
             y1 = e.clientY;
-            document.onmouseup = closeDragElement;
+            document.onmouseup = endDraggable;
 
-            // call a function whenever the cursor moves:
+            //call a function whenever the cursor moves
             document.onmousemove = elementDrag;
         }
 
@@ -36,21 +35,21 @@ function dragElement(div) {
             e = e || window.event;
             e.preventDefault();
 
-            // calculate the new cursor position:
+            //obtain new coordinates and their distances from the original
             x2 = x1 - e.clientX;
             y2 = y1 - e.clientY;
             x1 = e.clientX;
             y1 = e.clientY;
 
-            // set the element's new position:
+            //set the element's new position accordingly
             div.style.top = (div.offsetTop - y2) + "px";
             div.style.left = (div.offsetLeft - x2) + "px";
         }
 
-        function closeDragElement() {
-            // stop moving when mouse button is released:
+        function endDraggable() {
             document.onmouseup = null;
             document.onmousemove = null;
         }
+
     }
 }
