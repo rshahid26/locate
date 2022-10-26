@@ -1,62 +1,56 @@
-/**
- * Several eventListeners here use anonymous callbacks and then almost immediately
- * pass in a declared function. This looks strange at first, but I've found it's
- * the best way to remove eventListeners later without memory waste or the use of
- * JQuery/external libraries.
- */
-let div = document.getElementById("window_outer");
+//make window_outer elements draggable after pressing tab
+let tabPressed = false;
 
-//draggable allow users to select and move #window_outer elements while holding shift
-document.body.addEventListener("keydown", (e) => {
-    if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
+document.addEventListener("keydown", (e) => {
 
-        console.log("pressed shift");
-        draggable(div);
-    }
-});
+        if (e.code === "Tab") {
 
-document.body.addEventListener("keyup", (e) => {
-    if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
-        console.log("shift unpressed")
+            tabPressed = true;
+            dragElement(document.getElementById("window_outer"));
+        }
+    });
 
-        try {
-            div.removeEventListener("mousemove", mouseMoved);
-            div.removeEventListener("mousedown", mousePressed);
-            div.removeEventListener("mouseup", mouseUnpressed);
 
-        } catch (e) {
-            console.log(e);
+function dragElement(div) {
+    if (tabPressed) {
+
+        let x1 = 0, y1 = 0,
+            x2 = 0, y2 = 0;
+
+        div.onmousedown = dragMouse;
+
+        function dragMouse(e) {
+            e = e || window.event;
+            e.preventDefault();
+
+            // get the mouse cursor position at startup:
+            x1 = e.clientX;
+            y1 = e.clientY;
+            document.onmouseup = closeDragElement;
+
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+
+            // calculate the new cursor position:
+            x2 = x1 - e.clientX;
+            y2 = y1 - e.clientY;
+            x1 = e.clientX;
+            y1 = e.clientY;
+
+            // set the element's new position:
+            div.style.top = (div.offsetTop - y2) + "px";
+            div.style.left = (div.offsetLeft - x2) + "px";
+        }
+
+        function closeDragElement() {
+            // stop moving when mouse button is released:
+            document.onmouseup = null;
+            document.onmousemove = null;
         }
     }
-});
-
-function draggable(div) {
-    //initialize position variables and assign on mousedown
-    let x = 0;
-    let y = 0;
-
-    div.addEventListener("mousedown", (e) => {mousePressed(e, x, y)});
-    div.addEventListener("mouseup", (e) => {mouseUnpressed(e, x, y)});
-}
-
-
-function mousePressed(e, x, y) {
-    x = e.clientX;
-    y = e.clientY;
-    console.log(x + " " + y);
-
-    div.addEventListener("mousemove", (e) => {mouseMoved(e, x, y)});
-}
-
-function mouseMoved(e, x, y) {
-    if (!(x === 0 && y === 0)) {
-        console.log("x:" + Number(e.clientX - x));
-        console.log("y:" + Number(e.clientY - y));
-    }
-}
-
-
-function mouseUnpressed(e, x, y) {
-    div.removeEventListener("mousemove", mouseMoved);
-    //div.removeEventListener("mouseup");
 }
