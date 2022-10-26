@@ -10,7 +10,7 @@ document.addEventListener("keydown", (e) => {
     });
 
 
-function dragElement(div) {
+export function dragElement(div) {
     if (tabPressed) {
 
         let x1 = 0, y1 = 0,
