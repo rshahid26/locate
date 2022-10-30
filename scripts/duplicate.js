@@ -39,5 +39,4 @@ function duplicate() {
     document.body.innerHTML += nextWindow;
     draggable(nextWindow);
 
-
 }
