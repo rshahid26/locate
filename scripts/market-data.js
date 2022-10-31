@@ -16,9 +16,15 @@ fetch(fred + appendKey, {method: "GET"})
         return raw;
     })
     .then(() => {
-        document.getElementById("chart_container").innerHTML =
-            '<canvas id="chart" style="width:400px;"></canvas>';
-        createChart(raw);
+
+        for (let element of document.getElementsByClassName("chart_container")) {
+
+            element.innerHTML =
+                '<canvas id="chart" style="width:400px;"></canvas>';
+            createChart(raw);
+
+        }
+
     })
     .catch(reject => console.log(reject));
 
