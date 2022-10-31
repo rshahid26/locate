@@ -34,9 +34,9 @@ function duplicate() {
     console.log("test");
 
     let nextWindow = document.body.innerHTML;
+    document.body.innerHTML +=`<h1>test</h1>`;
+
     //import draggable module
-    draggable(nextWindow);
-    document.body.innerHTML += nextWindow;
-    draggable(nextWindow);
+    //draggable(nextWindow);
 
 }

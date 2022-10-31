@@ -2,8 +2,8 @@ html {
     font-family: ".AppleSystemUIFont", sans-serif;
 }
 
-#window_outer {
-    width: 400px;
+.window_outer {
+    width: 400px !important;
     padding: 20px 20px 20px 20px;
     justify-content: center;
     border: 2px solid darkgrey;
@@ -17,23 +17,23 @@ html {
     margin: 0 -50% 0 auto;
     transform: translate(-50%, -50%);
 }
-#window_inner {
+.window_inner {
 }
 
-#window_outer:hover {
+.window_outer:hover {
     cursor: grab;
 }
-#window_outer:active {
+.window_outer:active {
     cursor: grabbing;
 }
 
-#title_container {
+.title_container {
     display: flex;
 }
 input {
     min-width: 0;
 }
-#ticker {
+.ticker {
     height: 25px;
     letter-spacing: 1px;
     flex: 2 1 0;
@@ -44,7 +44,7 @@ input {
     border-style: ridge;
     border-width: .5px;
 }
-#ticker:focus {
+.ticker:focus {
     outline: none;
 }
 .title {
@@ -56,7 +56,7 @@ input {
 }
 #widget_container {
 }
-#widget_container_right {
+.widget_container_right {
     float: right;
     width: 66%;
 
@@ -72,10 +72,10 @@ input {
     flex: 1 1 0;
 }
 
-#chart_container {
+.chart_container {
 
 }
-#chart {
+.chart {
     width: 400px;
 }
 
@@ -87,7 +87,7 @@ h3 {
     font-size: 12px;
 }
 
-#time {
+.time {
     display: none;
 }
 
@@ -113,15 +113,6 @@ h3 {
     color: #1c3060;
     flex: 2 1 0;
 }
-
-
-
-#back, #submitButton {
-    padding-right: 6px;
-    padding-left: 6px;
-}
-
-
 
 .offset {
     /*border: 1px solid royalblue;*/
@@ -250,7 +241,7 @@ h3 {
     100% { opacity:100%; }
 }
 
-#window_outer:before {
+.window_outer:before {
     position: absolute;
     width: 0;
     height: 2px;
@@ -261,7 +252,7 @@ h3 {
     transition: 100ms width ease 60300ms;
 }
 
-#window_outer:after {
+.window_outer:after {
     position: absolute;
     width: 2px;
     height: 0;
@@ -272,7 +263,7 @@ h3 {
     transition: 100ms height ease 60200ms;
 }
 
-#window_inner:after {
+.window_inner:after {
     position: absolute;
     width: 0;
     height: 2px;
@@ -283,7 +274,7 @@ h3 {
     transition: 100ms width ease 60100ms;
 }
 
-#window_inner:before {
+.window_inner:before {
     position: absolute;
     width: 2px;
     height: 0;
@@ -294,22 +285,22 @@ h3 {
     transition: 100ms height ease 60000ms;
 }
 
-#window_outer:hover:before {
+.window_outer:hover:before {
     width: calc(100% + 2px);
     transition: 100ms width ease 0ms;
 }
 
-#window_outer:hover:after {
+.window_outer:hover:after {
     height: calc(100% + 2px);
     transition: 100ms height ease 100ms;
 }
 
-#window_outer:hover #window_inner:after {
+.window_outer:hover .window_inner:after {
     width: calc(100% + 2px);
     transition: 100ms width ease 200ms;
 }
 
-#window_outer:hover #window_inner:before {
+.window_outer:hover .window_inner:before {
     height: calc(100% + 2px);
     transition: 100ms height ease 300ms;
 }

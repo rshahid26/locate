@@ -5,7 +5,9 @@ document.addEventListener("keydown", (e) => {
         if (e.code === "Tab") {
 
             tabPressed = true;
-            dragElement(document.getElementById("window_outer"));
+
+            for (let element of document.getElementsByClassName("window_outer"))
+                dragElement(element);
         }
     });
 
