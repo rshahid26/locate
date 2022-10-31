@@ -20,7 +20,7 @@ fetch(fred + appendKey, {method: "GET"})
         for (let element of document.getElementsByClassName("chart_container")) {
 
             element.innerHTML =
-                '<canvas id="chart" style="width:400px;"></canvas>';
+                '<canvas id="chart1" style="width:400px;"></canvas>';
             createChart(raw);
 
         }
@@ -37,7 +37,7 @@ function createChart(raw) {
         yValues.push(raw[i][1]);
     }
 
-    return new Chart("chart", {
+    return new Chart("chart1", {
         type: "line",
         data: {
             labels: xValues,
