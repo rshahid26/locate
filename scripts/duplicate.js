@@ -31,12 +31,16 @@ function shiftUp(e) {
 }
 
 function duplicate() {
-    console.log("test");
 
     let nextWindow = document.body.innerHTML;
-    document.body.innerHTML +=`<h1>test</h1>`;
+    document.body.innerHTML += nextWindow;
 
-    //import draggable module
-    //draggable(nextWindow);
+    //reassign nextWindow in updated DOM
+    nextWindow = document.getElementsByClassName("window_outer")
+        [document.getElementsByClassName("window_outer").length - 1];
+
+    //set spawn coordinates
+    nextWindow.style.top = "25%";
+    nextWindow.style.left = "25%";
 
 }
