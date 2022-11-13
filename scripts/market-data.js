@@ -3,8 +3,8 @@ const SECRET_KEY = "qU2qHN7QX1NQTK6bh4i4cM340x8z20WKAzRdIVu6";
 
 fetch("https://data.alpaca.markets/v2/stocks/TSLA", {
     method: "GET",
-    "APCA-API-KEY-ID": API_KEY,
-    "APCA-API-SECRET-KEY": SECRET_KEY
+    //"APCA-API-KEY-ID": API_KEY,
+    //"APCA-API-SECRET-KEY": SECRET_KEY
 })
     .then(response => {
         return response.json();
