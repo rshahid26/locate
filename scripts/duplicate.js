@@ -1,13 +1,13 @@
 "use strict";
 import * as draggable from "./draggable.js";
 
-//allow users to create multiple windows with Shift + C
+//allow users to create multiple windows with Shift + c
 document.addEventListener("keydown", shiftDown);
 document.addEventListener("keyup", shiftUp);
 
 let keyHistory = [];
 
-//run duplicate() while a string of 'C's follow the shift key
+//run duplicate() while a string of 'c's follow the shift key
 function shiftDown(e) {
 
     if (e.code === "ShiftLeft" || e.code === "ShiftRight")
