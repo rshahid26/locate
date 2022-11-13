@@ -30,17 +30,19 @@ export function dragElement(div) {
             x1 = e.clientX;
             y1 = e.clientY;
 
+            //ensure mouse position is not in a ticker box
             for (let ticker of document.getElementsByClassName("ticker")) {
 
-                //assign distance relative to ticker coordinates
+                //assign distance relative to ticker coordinates if appropriate
                 let xDead = x1 > ticker.getBoundingClientRect().x ?
-                    x1 - ticker.getBoundingClientRect().x : ticker.getBoundingClientRect().x - x1;
+                    x1 - ticker.getBoundingClientRect().x : undefined;
 
                 let yDead = y1 > ticker.getBoundingClientRect().y ?
-                    y1 - ticker.getBoundingClientRect().y : ticker.getBoundingClientRect().y - y1;
+                    y1 - ticker.getBoundingClientRect().y : undefined;
 
-
-                if (xDead < ticker.getBoundingClientRect().width && yDead < ticker.getBoundingClientRect().height) {
+                //compare distances with width/height of any ticker box (all identical)
+                if (xDead < ticker.getBoundingClientRect().width &&
+                    yDead < ticker.getBoundingClientRect().height) {
 
                     ticker.focus();
                     return -1;
