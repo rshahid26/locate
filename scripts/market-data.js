@@ -3,7 +3,6 @@
 const fred = "https://data.nasdaq.com/api/v3/datasets/FRED/NROUST?";
 const appendKey = "api_key=QGc2a4qtCf1Efg_tK8fo";
 
-let raw;
 fetch(fred + appendKey, {method: "GET"})
     .then(response => {
         return response.json();
@@ -12,10 +11,9 @@ fetch(fred + appendKey, {method: "GET"})
         console.log("\n" + data.dataset.name);
         console.log(data.dataset.oldest_available_date + " to " + data.dataset.newest_available_date);
 
-        raw = data.dataset.data;
-        return raw;
+        return data.dataset.data;
     })
-    .then(() => {
+    .then(raw => {
 
         for (let element of document.getElementsByClassName("chart_container")) {
 
