@@ -17,6 +17,7 @@ document.addEventListener("keydown", (e) => {
 export function dragElement(div) {
     if (tabPressed) {
 
+        //declare variables for mousedown and mousemove positions
         let x1 = 0, y1 = 0,
             x2 = 0, y2 = 0;
 
@@ -29,11 +30,22 @@ export function dragElement(div) {
             x1 = e.clientX;
             y1 = e.clientY;
 
-            //check for dead zones
-            for (let element of document.getElementsByClassName("ticker")) {
+            for (let ticker of document.getElementsByClassName("ticker")) {
 
-                console.log(element.getBoundingClientRect().x);
+                //assign distance relative to ticker coordinates
+                let xDead = x1 > ticker.getBoundingClientRect().x ?
+                    x1 - ticker.getBoundingClientRect().x : ticker.getBoundingClientRect().x - x1;
 
+                let yDead = y1 > ticker.getBoundingClientRect().y ?
+                    y1 - ticker.getBoundingClientRect().y : ticker.getBoundingClientRect().y - y1;
+
+
+                if (xDead < ticker.getBoundingClientRect().width && yDead < ticker.getBoundingClientRect().height) {
+
+                    ticker.focus();
+                    return -1;
+
+                }
             }
 
             //call functions based on cursor movement
