@@ -36,7 +36,7 @@ function duplicate() {
     let nextWindow = document.getElementsByClassName("window_outer")
         [document.getElementsByClassName("window_outer").length - 1];
 
-    document.body.innerHTML += nextWindow;
+    nextWindow.insertAdjacentHTML('afterend', nextWindow.outerHTML);
 
     //reassign nextWindow in updated DOM
     nextWindow = document.getElementsByClassName("window_outer")
