@@ -1,4 +1,5 @@
-//import { draggable } from "./draggable.js";
+"use strict";
+import * as draggable from "./draggable.js";
 
 //allow users to create multiple windows with Shift + C
 document.addEventListener("keydown", shiftDown);
@@ -32,7 +33,9 @@ function shiftUp(e) {
 
 function duplicate() {
 
-    let nextWindow = document.body.innerHTML;
+    let nextWindow = document.getElementsByClassName("window_outer")
+        [document.getElementsByClassName("window_outer").length - 1];
+
     document.body.innerHTML += nextWindow;
 
     //reassign nextWindow in updated DOM
@@ -42,5 +45,8 @@ function duplicate() {
     //set spawn coordinates
     nextWindow.style.top = "25%";
     nextWindow.style.left = "25%";
+
+    //apply dragElement
+    draggable.dragElement(nextWindow);
 
 }
