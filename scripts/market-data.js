@@ -1,11 +1,14 @@
-/*
+const API_KEY = "PKWAD3H9E57ARVV755NA";
+const SECRET_KEY = "qU2qHN7QX1NQTK6bh4i4cM340x8z20WKAzRdIVu6";
 
-API Key
-Secret Key
+fetch("https://data.alpaca.markets/v2", {method: "GET"})
+    .then(response => {
+        return response.json();
+    })
+    .catch(error => {
+        console.log(error);
+    })
 
-PKWAD3H9E57ARVV755NA
-qU2qHN7QX1NQTK6bh4i4cM340x8z20WKAzRdIVu6
- */
 
 //Federal Reserve Economic Data API (FRED)
 const fred = "https://data.nasdaq.com/api/v3/datasets/FRED/NROUST?";
