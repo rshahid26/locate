@@ -23,20 +23,25 @@ export function dragElement(div) {
         div.onmousedown = dragMouse;
 
         function dragMouse(e) {
-            e = e || window.event;
             e.preventDefault();
 
             //get the mouse cursor position at startup
             x1 = e.clientX;
             y1 = e.clientY;
-            document.onmouseup = endDraggable;
 
-            //call a function whenever the cursor moves
+            //check for dead zones
+            for (let element of document.getElementsByClassName("ticker")) {
+
+                console.log(element.getBoundingClientRect().x);
+
+            }
+
+            //call functions based on cursor movement
+            document.onmouseup = endDraggable;
             document.onmousemove = elementDrag;
         }
 
         function elementDrag(e) {
-            e = e || window.event;
             e.preventDefault();
 
             //obtain new coordinates and their distances from the original
