@@ -1,5 +1,6 @@
 "use strict";
 import * as draggable from "./draggable.js";
+import * as marketData from "./market-data.js";
 
 //allow users to create multiple windows with Shift + c
 document.addEventListener("keydown", shiftDown);
@@ -46,7 +47,7 @@ function duplicate() {
     nextWindow.style.top = "25%";
     nextWindow.style.left = "25%";
 
-    //apply dragElement
+    //apply exported functions
     draggable.dragElement(nextWindow);
 
 }

@@ -1,8 +1,17 @@
-//https://auth.tdameritrade.com/auth?response_type=code&redirect_uri=http://localhost&client_id=GFYPJM0HI9V0DJ7EQSJPOG8ZZ148CQEY%40AMER.OAUTHAP
+/*
+
+API Key
+Secret Key
+
+PKWAD3H9E57ARVV755NA
+qU2qHN7QX1NQTK6bh4i4cM340x8z20WKAzRdIVu6
+ */
+
 //Federal Reserve Economic Data API (FRED)
 const fred = "https://data.nasdaq.com/api/v3/datasets/FRED/NROUST?";
 const appendKey = "api_key=QGc2a4qtCf1Efg_tK8fo";
 
+export let raw;
 fetch(fred + appendKey, {method: "GET"})
     .then(response => {
         return response.json();
@@ -11,7 +20,8 @@ fetch(fred + appendKey, {method: "GET"})
         console.log("\n" + data.dataset.name);
         console.log(data.dataset.oldest_available_date + " to " + data.dataset.newest_available_date);
 
-        return data.dataset.data;
+        raw = data.dataset.data;
+        return raw;
     })
     .then(raw => {
 
@@ -26,7 +36,7 @@ fetch(fred + appendKey, {method: "GET"})
     })
     .catch(reject => console.log(reject));
 
-function createChart(raw) {
+export function createChart(raw) {
     let xValues = [];
     let yValues = [];
 
