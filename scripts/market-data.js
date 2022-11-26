@@ -1,6 +1,14 @@
 const API_KEY = "PKWAD3H9E57ARVV755NA";
 const SECRET_KEY = "qU2qHN7QX1NQTK6bh4i4cM340x8z20WKAzRdIVu6";
 
+fetch("http://localhost:8080", {method: "GET"})
+    .then(response => {
+        return response;
+    })
+    .catch(error => {
+        console.log(error);
+    });
+/*
 fetch("https://data.alpaca.markets/v2/stocks/TSLA", {
     method: "GET",
     //"APCA-API-KEY-ID": API_KEY,
@@ -13,6 +21,7 @@ fetch("https://data.alpaca.markets/v2/stocks/TSLA", {
         console.log(error);
     })
 
+ */
 
 //Federal Reserve Economic Data API (FRED)
 const fred = "https://data.nasdaq.com/api/v3/datasets/FRED/NROUST?";
