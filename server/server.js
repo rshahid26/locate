@@ -29,7 +29,14 @@ const server = http.createServer((req, res) => {
     }
 
     res.writeHead(200, {'Content-Type': contentType});
-    res.write('<h1>this is the response</h1>');
+
+    // Send different cases
+
+    if (req.url === '/')
+        res.write('<h1>this is the home page response</h1>');
+    if (req.url === '/TSLA')
+        res.write('{symbol: "TSLA", price: "405.00"}');
+
     res.end();
 
 });
