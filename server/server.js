@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 8080;
 
 const server = http.createServer((req, res) => {
 
-    // For test purposes, log these details to the terminal
+    // For test purposes, log client info to the terminal
     console.log(req.method, req.url);
     console.log('bruh');
 
@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
     }
 
     res.writeHead(200, {'Content-Type': contentType});
-    res.write('do i wanna know if the console worked?');
+    res.write('this is the response');
     res.end();
 
 });
