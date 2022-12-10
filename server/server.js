@@ -37,8 +37,15 @@ const server = http.createServer((req, res) => {
 
     if (req.url === '/')
         res.write('<h1>this is the home page response</h1>');
-    if (req.url === '/TSLA')
-        res.write('{symbol: "TSLA", price: "405.00"}');
+    else if (req.url !== '/favicon.ico') {
+
+        let resObject = {
+            symbol: search.query.split('&')[0].split('=')[1],
+            time: search.query.split('&')[1].split('=')[1]
+        }
+        res.write(JSON.stringify(resObject));
+
+    }
 
     res.end();
 
