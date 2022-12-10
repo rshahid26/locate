@@ -1,6 +1,8 @@
 const http = require('http');
 const path = require('path');
 
+
+
 // Development server
 const PORT = process.env.PORT || 8080;
 
@@ -27,7 +29,7 @@ const server = http.createServer((req, res) => {
     }
 
     res.writeHead(200, {'Content-Type': contentType});
-    res.write('this is the response');
+    res.write('<h1>this is the response</h1>');
     res.end();
 
 });
