@@ -3,7 +3,8 @@ const SECRET_KEY = "qU2qHN7QX1NQTK6bh4i4cM340x8z20WKAzRdIVu6";
 
 fetch("http://localhost:8080", {method: "GET"})
     .then(response => {
-        return response;
+        console.log(response);
+        return response.text();
     })
     .catch(error => {
         console.log(error);
