@@ -1,5 +1,6 @@
 const http = require('http');
 const path = require('path');
+const url = require('url');
 const express = require('express');
 
 
@@ -31,6 +32,8 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, {'Content-Type': contentType});
 
     // Send different cases
+    let search = url.parse(req.url);
+    console.log(search);
 
     if (req.url === '/')
         res.write('<h1>this is the home page response</h1>');
