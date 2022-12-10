@@ -5,9 +5,12 @@ const path = require('path');
 const PORT = process.env.PORT || 8080;
 
 const server = http.createServer((req, res) => {
+
+    // For test purposes, log these details to the terminal
     console.log(req.method, req.url);
     console.log('bruh');
 
+    // Determine extension of response based on request
     const extension = path.extname(req.url);
     let contentType;
 
