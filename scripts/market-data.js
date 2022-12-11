@@ -24,7 +24,7 @@ fetch("https://data.alpaca.markets/v2/stocks/TSLA", {
 
  */
 
-//Federal Reserve Economic Data API (FRED)
+// Federal Reserve Economic Data API (FRED)
 const fred = "https://data.nasdaq.com/api/v3/datasets/FRED/NROUST?";
 const appendKey = "api_key=QGc2a4qtCf1Efg_tK8fo";
 
