@@ -10,8 +10,16 @@ for (let element of forms)
         const ticker = element.getElementsByClassName("ticker")[0]
             .value.toUpperCase();
         const time = "DAY";
+        const url = "http://localhost:8080/query;
 
-
+        fetch("http://localhost:8080", {method: "GET"})
+            .then(response => {
+                console.log(response);
+                return response.text();
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
         console.log(ticker + " " + time);
 

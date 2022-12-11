@@ -32,19 +32,19 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, {'Content-Type': contentType});
 
     // Send different cases
-    let search = url.parse(req.url);
-    console.log(search);
-
     if (req.url === '/')
         res.write('<h1>this is the home page response</h1>');
     else if (req.url !== '/favicon.ico') {
+
+        let search = url.parse(req.url);
+        console.log(search);
 
         let resObject = {
             symbol: search.query.split('&')[0].split('=')[1],
             time: search.query.split('&')[1].split('=')[1]
         }
-        res.write(JSON.stringify(resObject));
 
+        res.write(JSON.stringify(resObject));
     }
 
     res.end();
