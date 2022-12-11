@@ -47,7 +47,7 @@ function duplicate() {
     nextWindow.style.top = "25%";
     nextWindow.style.left = "25%";
 
-    //apply exported functions
+    //apply exported function draggable
     draggable.dragElement(nextWindow);
 
 }
