@@ -7,12 +7,11 @@ for (let element of forms)
 
         e.preventDefault();
 
-        const ticker = element.getElementsByClassName("ticker")[0]
-            .value.toUpperCase();
+        const ticker = element.getElementsByClassName("ticker")[0].value.toUpperCase();
         const time = "DAY";
-        const url = "http://localhost:8080/query;
 
-        fetch("http://localhost:8080", {method: "GET"})
+        const url = `http://localhost:8080/query?ticker=${ticker}&time=${time}`;
+        fetch(url, {method: "GET"})
             .then(response => {
                 console.log(response);
                 return response.text();
