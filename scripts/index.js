@@ -1,5 +1,5 @@
 "use strict";
-import {createChart} from "./market-data";
+import * as marketData from "./market-data.js";
 
 // Retrieve locate data on ticker entry
 const forms = document.getElementsByClassName("ticker_form");
@@ -13,19 +13,18 @@ for (let element of forms)
         const time = "DAY";
         const url = `http://localhost:8080/query?ticker=${ticker}&time=${time}`;
 
+        console.log(url);
         // Send a get request to the new URL
         fetch(url, {method: "GET"})
             .then(response => {
                 return JSON.stringify(response);
             })
             .then(data => {
-                createChart(data);
+                marketData.createChart(data);
             })
             .catch(error => {
                 console.log(error);
             });
-
-        console.log(ticker + " " + time);
 
         // Auto-select input fields on submit
         element.getElementsByClassName("ticker")[0].select();
