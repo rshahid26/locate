@@ -9,10 +9,6 @@ const PORT = process.env.PORT || 8080;
 
 const server = http.createServer((req, res) => {
 
-    // For test purposes, log client info to the terminal
-    console.log(req.method, req.url);
-    console.log('bruh');
-
     // Determine extension of response based on request
     const extension = path.extname(req.url);
     let contentType;
@@ -28,8 +24,6 @@ const server = http.createServer((req, res) => {
             contentType = 'text/html';
             break;
     }
-
-    res.writeHead(200, {'Content-Type': contentType});
 
     // Send different cases
     if (req.url === '/')
@@ -47,6 +41,7 @@ const server = http.createServer((req, res) => {
         res.write(JSON.stringify(resObject));
     }
 
+    res.writeHead(200, {'Content-Type': contentType});
     res.end();
 
 });
