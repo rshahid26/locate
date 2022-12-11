@@ -42,6 +42,8 @@ input {
 
     border-style: ridge;
     border-width: .5px;
+
+    text-transform: uppercase;
 }
 .ticker:focus {
     outline: none;

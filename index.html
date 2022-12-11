@@ -11,13 +11,15 @@
 <div class="window_outer">
     <div class="window_inner">
 
-        <div class="title_container">
-            <input type="text" class="ticker" placeholder="HKD" name="ticker">
-            <h1 class="title">AMTD Digital Inc. ADR</h1>
-            <div class="info">
-                <p>Search a database of over 500 questions about trading at Trillium</p>
+        <form class="ticker_form" method="post">
+            <div class="title_container">
+                <input type="text" class="ticker" placeholder="HKD" name="ticker" autocapitalize="on">
+                <h1 class="title">AMTD Digital Inc. ADR</h1>
+                <div class="info">
+                    <p>Search a database of over 500 questions about trading at Trillium</p>
+                </div>
             </div>
-        </div>
+        </form>
 
         <div class="widget_container">
             <h2 class="price widget">89.64</h2>
@@ -40,7 +42,7 @@
     </div>
 </div>
 
-
+<script src="scripts/index.js"></script>
 <script src="scripts/ocr.js"></script>
 <script src="scripts/market-data.js" type="module"></script>
 <script src="scripts/draggable.js" type="module"></script>
