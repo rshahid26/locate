@@ -1,5 +1,6 @@
 "use strict";
 import * as draggable from "./draggable.js";
+import {locate} from "./index.js";
 import * as marketData from "./market-data.js";
 
 // Allow users to create multiple windows with Shift + c
@@ -7,6 +8,7 @@ document.addEventListener("keydown", shiftDown);
 document.addEventListener("keyup", shiftUp);
 
 let keyHistory = [];
+locate();
 
 // Run duplicate() while a string of 'c's follow the shift key
 function shiftDown(e) {
@@ -50,4 +52,6 @@ function duplicate() {
     // Apply exported function draggable
     draggable.dragElement(nextWindow);
 
+    // Reload index for retrieving locates
+    locate();
 }
