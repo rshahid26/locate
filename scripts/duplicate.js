@@ -48,7 +48,7 @@ function duplicate() {
 
     // Update locate()
     nextWindow.lastElementChild.getElementsByClassName('chart_container')[0]
-        .firstElementChild.id = `chart${++iterator}`;
+        .lastElementChild.id = `chart${++iterator}`;
     locate();
 
     // Set spawn coordinates

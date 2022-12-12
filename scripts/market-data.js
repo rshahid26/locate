@@ -19,16 +19,16 @@ fetch("https://data.alpaca.markets/v2/stocks/TSLA", {
 let iterator = 0;
 export function marketData(element, ticker, time) {
 
-    // Navigate from element to the associated chart container
-    let container = element.parentElement.getElementsByClassName("chart_container")[0];
+    // Navigate from element to the associated chart canvas
+    let canvas = element.parentElement.getElementsByClassName("chart_container")[0].lastElementChild;
     console.log(ticker + " " + time + " chart!");
 
     // Load dummy data
-    dummy(container);
+    dummy(canvas);
 
 }
 
-function dummy(container) {
+function dummy(canvas) {
 
     // Federal Reserve Economic Data API (FRED)
     const fred = "https://data.nasdaq.com/api/v3/datasets/FRED/NROUST?";
@@ -42,12 +42,12 @@ function dummy(container) {
             return data.dataset.data;
         })
         .then(data => {
-            createChart(data);
+            createChart(canvas, data);
         })
         .catch(reject => console.log(reject));
 }
 
-function createChart(data) {
+function createChart(canvas, data) {
     let xValues = [];
     let yValues = [];
 
@@ -56,7 +56,7 @@ function createChart(data) {
         yValues.push(data[i][1]);
     }
 
-    return new Chart("chart1", {
+    return new Chart(canvas.id, {
         type: "line",
         data: {
             labels: xValues,
