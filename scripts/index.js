@@ -25,7 +25,7 @@ export function locate() {
                     //marketData.createChart(data);
                 })
                 .catch(error => {
-                    console.log("catch " + error);
+                    console.log("Locate data: " + error);
                 });
 
             // Retrieve market data
