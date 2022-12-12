@@ -24,6 +24,7 @@ export let raw;
 export function marketData(element, ticker, time) {
 
     // Navigate from the form to associated chart
+    console.log("new " + ticker + " chart!");
 
 }
 

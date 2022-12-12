@@ -1,5 +1,5 @@
 "use strict";
-import {marketData} from "./market-data";
+import {marketData} from "./market-data.js";
 
 export function locate() {
 
@@ -40,14 +40,14 @@ function autoSelect() {
     // Auto-select input fields on submit
     const forms = document.getElementsByClassName("ticker_form");
     for (let element of forms)
-        element.addEventListener("submit", (e) => {
+        element.addEventListener("submit", () => {
 
             element.getElementsByClassName("ticker")[0].select();
         })
     // Auto-select input fields on click
     const tickers = document.getElementsByClassName("ticker");
     for (let element of tickers)
-        element.addEventListener("click", (e) => {
+        element.addEventListener("click", () => {
 
             element.select();
         })
