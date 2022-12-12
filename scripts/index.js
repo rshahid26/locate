@@ -1,5 +1,5 @@
 "use strict";
-import * as marketData from "./market-data.js";
+import {marketData} from "./market-data";
 
 export function locate() {
 
@@ -22,14 +22,23 @@ export function locate() {
                     return JSON.stringify(response);
                 })
                 .then(data => {
-                    marketData.createChart(data);
+                    //marketData.createChart(data);
                 })
                 .catch(error => {
                     console.log("catch " + error);
                 });
+
+            // Retrieve market data
+            marketData(element, ticker, time);
         })
 
+    autoSelect();
+}
+
+function autoSelect() {
+
     // Auto-select input fields on submit
+    const forms = document.getElementsByClassName("ticker_form");
     for (let element of forms)
         element.addEventListener("submit", (e) => {
 

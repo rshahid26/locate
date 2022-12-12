@@ -21,6 +21,13 @@ const fred = "https://data.nasdaq.com/api/v3/datasets/FRED/NROUST?";
 const appendKey = "api_key=QGc2a4qtCf1Efg_tK8fo";
 
 export let raw;
+export function marketData(element, ticker, time) {
+
+    // Navigate from the form to associated chart
+
+}
+
+
 fetch(fred + appendKey, {method: "GET"})
     .then(response => {
         return response.json();
