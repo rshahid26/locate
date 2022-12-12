@@ -42,8 +42,6 @@ function dummy(container) {
             return data.dataset.data;
         })
         .then(data => {
-            container.innerHTML =
-                `<canvas id="chart1" style="width:400px;"></canvas>`;
             createChart(data);
         })
         .catch(reject => console.log(reject));

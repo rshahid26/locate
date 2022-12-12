@@ -34,6 +34,7 @@ function shiftUp(e) {
         keyHistory = [];
 }
 
+let iterator = 1;
 function duplicate() {
 
     let nextWindow = document.getElementsByClassName("window_outer")
@@ -45,6 +46,11 @@ function duplicate() {
     nextWindow = document.getElementsByClassName("window_outer")
         [document.getElementsByClassName("window_outer").length - 1];
 
+    // Update locate()
+    nextWindow.lastElementChild.getElementsByClassName('chart_container')[0]
+        .firstElementChild.id = `chart${++iterator}`;
+    locate();
+
     // Set spawn coordinates
     nextWindow.style.top = "25%";
     nextWindow.style.left = "25%";
@@ -52,6 +58,4 @@ function duplicate() {
     // Apply exported function draggable
     draggable.dragElement(nextWindow);
 
-    // Reload index for retrieving locates
-    locate();
 }
