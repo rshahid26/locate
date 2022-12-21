@@ -17,6 +17,7 @@ fetch("https://data.alpaca.markets/v2/stocks/TSLA", {
  */
 
 let iterator = 0;
+
 export function marketData(element, ticker, time) {
 
     // Navigate from element to the associated chart canvas
@@ -26,11 +27,33 @@ export function marketData(element, ticker, time) {
     // Load dummy data
     dummy(canvas);
 
+    stockMarketData(element, ticker, time);
+
+}
+
+function stockMarketData(element, ticker, time) {
+
+    // Navigate from element to the associated chart canvas
+    let canvas = element.parentElement.getElementsByClassName("chart_container")[0].lastElementChild;
+
+    // Alpha Vantage API
+    const key = "CKEJIMJVB8FKOX6D";
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED
+        &symbol=${ticker}&interval=15min&slice=year1month1&apikey=${key}`;
+
+    fetch(url, {method: "GET"})
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
 }
 
 function dummy(canvas) {
 
-    // Federal Reserve Economic Data API (FRED)
+    // Federal Reserve Economic Data API
     const fred = "https://data.nasdaq.com/api/v3/datasets/FRED/NROUST?";
     const appendKey = "api_key=QGc2a4qtCf1Efg_tK8fo";
 

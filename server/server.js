@@ -26,8 +26,12 @@ const server = http.createServer((req, res) => {
     }
 
     // Send different cases
-    if (req.url === '/')
+    if (req.url === '/') {
+
         res.write('<h1>this is the home page response</h1>');
+        console.log('home');
+
+    }
     else if (req.url !== '/favicon.ico') {
 
         let search = url.parse(req.url);
