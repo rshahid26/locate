@@ -2,7 +2,7 @@ const http = require('http');
 const path = require('path');
 const url = require('url');
 const express = require('express');
-
+const {loadData} = require('market-data');
 
 // Development server
 const PORT = process.env.PORT || 8080;
@@ -42,6 +42,8 @@ const server = http.createServer((req, res) => {
             time: search.query.split('&')[1].split('=')[1]
         }
 
+        // Append market data to resObject and send to user
+        loadData(resObject);
         res.write(JSON.stringify(resObject));
     }
 
