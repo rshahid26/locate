@@ -1,5 +1,6 @@
 'use strict';
 const request = require('request');
+module.exports = {loadData};
 
 function loadData(obj) {
 

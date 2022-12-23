@@ -2,7 +2,7 @@ const http = require('http');
 const path = require('path');
 const url = require('url');
 const express = require('express');
-const {loadData} = require('market-data');
+const marketData = require("./market-data");
 
 // Development server
 const PORT = process.env.PORT || 8080;
@@ -43,7 +43,7 @@ const server = http.createServer((req, res) => {
         }
 
         // Append market data to resObject and send to user
-        loadData(resObject);
+        marketData.loadData(resObject);
         res.write(JSON.stringify(resObject));
     }
 
