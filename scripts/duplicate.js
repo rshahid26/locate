@@ -1,7 +1,7 @@
 "use strict";
 import * as draggable from "./draggable.js";
 import {locate} from "./index.js";
-import * as marketData from "./market-data.js";
+import * as marketData from "./market.js";
 
 // Allow users to create multiple windows with Shift + c
 document.addEventListener("keydown", shiftDown);

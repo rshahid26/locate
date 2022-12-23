@@ -1,5 +1,5 @@
 "use strict";
-import {marketData} from "./market-data.js";
+import {marketData} from "./market.js";
 
 export function locate() {
 
