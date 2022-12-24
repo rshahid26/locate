@@ -1,13 +1,11 @@
 let iterator = 0;
-export function prepareData(element, ticker, time) {
+export function prepareData(element, resObject) {
 
     // Navigate from element to the associated chart canvas
     let canvas = element.parentElement.getElementsByClassName("chart_container")[0].lastElementChild;
 
-    // Load dummy data
-    //dummy(canvas);
-
-    //
+    console.log(resObject);
+    dummy(canvas);
 
 }
 

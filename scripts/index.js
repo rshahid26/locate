@@ -18,11 +18,14 @@ export function tickerCallback() {
             console.log("Request sent to " + url);
             fetch(url, {method: "GET"})
                 .then(response => {
+                    return response.text();
+                })
+                .then(resObject => {
                     // Update UI
-                    prepareData(element, JSON.stringify(response));
+                    prepareData(element, JSON.parse(resObject));
                 })
                 .catch(error => {
-                    console.log("Locate data: " + error);
+                    console.log("Server market data: " + error);
                 });
         })
 
