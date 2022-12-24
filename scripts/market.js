@@ -1,12 +1,11 @@
 let iterator = 0;
-export function marketData(element, ticker, time) {
+export function prepareData(element, ticker, time) {
 
     // Navigate from element to the associated chart canvas
     let canvas = element.parentElement.getElementsByClassName("chart_container")[0].lastElementChild;
-    console.log(ticker + " " + time + " chart!");
 
     // Load dummy data
-    dummy(canvas);
+    //dummy(canvas);
 
     stockMarketData(element, ticker, time);
 
@@ -17,18 +16,7 @@ function stockMarketData(element, ticker, time) {
     // Navigate from element to the associated chart canvas
     let canvas = element.parentElement.getElementsByClassName("chart_container")[0].lastElementChild;
 
-    // Alpha Vantage API
-    const key = "CKEJIMJVB8FKOX6D";
-    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED
-        &symbol=${ticker}&interval=15min&slice=year1month1&apikey=${key}`;
 
-    fetch(url, {method: "GET"})
-        .then(response => {
-            console.log(response);
-        })
-        .catch(error => {
-            console.log(error);
-        })
 
 }
 

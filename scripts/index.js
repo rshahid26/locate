@@ -1,5 +1,5 @@
 "use strict";
-import {marketData} from "./market.js";
+import {prepareData} from "./market.js";
 
 export function tickerCallback() {
 
@@ -22,14 +22,14 @@ export function tickerCallback() {
                     return JSON.stringify(response);
                 })
                 .then(data => {
-                    //marketData.createChart(data);
+                    //prepareData.createChart(data);
                 })
                 .catch(error => {
                     console.log("Locate data: " + error);
                 });
 
             // Retrieve market data
-            marketData(element, ticker, time);
+            prepareData(element, ticker, time);
         })
 
     autoSelect();
