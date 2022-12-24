@@ -1,6 +1,6 @@
 "use strict";
 import * as draggable from "./draggable.js";
-import {locate} from "./index.js";
+import {tickerCallback} from "./index.js";
 import * as marketData from "./market.js";
 
 // Allow users to create multiple windows with Shift + c
@@ -8,7 +8,7 @@ document.addEventListener("keydown", shiftDown);
 document.addEventListener("keyup", shiftUp);
 
 let keyHistory = [];
-locate();
+tickerCallback();
 
 // Run duplicate() while a string of 'c's follow the shift key
 function shiftDown(e) {
@@ -49,7 +49,7 @@ function duplicate() {
     // Update locate()
     nextWindow.lastElementChild.getElementsByClassName('chart_container')[0]
         .lastElementChild.id = `chart${++iterator}`;
-    locate();
+    tickerCallback();
 
     // Set spawn coordinates
     nextWindow.style.top = "25%";

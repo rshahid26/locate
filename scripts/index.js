@@ -1,7 +1,7 @@
 "use strict";
 import {marketData} from "./market.js";
 
-export function locate() {
+export function tickerCallback() {
 
     // Retrieve locate data on ticker entry
     const forms = document.getElementsByClassName("ticker_form");
