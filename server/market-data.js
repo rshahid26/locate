@@ -10,7 +10,7 @@ function loadData(symbol) {
 
         request.get({
             url: url,
-            json: true,
+            json: false,
             headers: {'User-Agent': 'request'}
         }, (err, res, data) => {
 

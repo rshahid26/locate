@@ -4,8 +4,16 @@ export function prepareData(element, resObject) {
     // Navigate from element to the associated chart canvas
     let canvas = element.parentElement.getElementsByClassName("chart_container")[0].lastElementChild;
 
+    // Isolate data, split into iterable arrays
+    resObject.data = resObject.data
+        .replace(/(\r)/gm,'').split('volume')[1].split('\n').filter(n => n);
+
+    for (let key in resObject.data)
+        resObject.data[key] = resObject.data[key].split(',');
+
     console.log(resObject);
-    dummy(canvas);
+    createChart(canvas, resObject.data);
+    //dummy(canvas);
 
 }
 
