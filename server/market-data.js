@@ -18,7 +18,7 @@ function loadData(symbol) {
                 console.log('Status:', res.statusCode + ' Error:', err);
                 reject(err);
             } else {
-                resolve(JSON.stringify(data));
+                resolve(data);
             }
         });
 

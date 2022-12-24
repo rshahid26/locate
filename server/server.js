@@ -29,9 +29,10 @@ const server = http.createServer((req, res) => {
 
         marketData.loadData(resObject.symbol)
             .then((data) => {
-                resObject.data = data;
+                resObject.data = JSON.stringify(data);
 
                 // Append market data to resObject and send to user
+                console.log(resObject);
                 res.write(JSON.stringify(resObject));
             })
             .catch((err) => {
