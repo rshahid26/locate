@@ -15,7 +15,7 @@ export function locate() {
             const time = "DAY";
             const url = `http://localhost:8080/query?ticker=${ticker}&time=${time}`;
 
-            console.log(url);
+            console.log("Request sent to " + url);
             // Send a get request to the new URL
             fetch(url, {method: "GET"})
                 .then(response => {

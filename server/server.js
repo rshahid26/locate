@@ -25,6 +25,10 @@ const server = http.createServer((req, res) => {
             break;
     }
 
+    // CORS TODO: remove in prod
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.writeHead(200, {'Content-Type': contentType});
+
     // Send different cases
     if (req.url === '/') {
 
@@ -42,22 +46,26 @@ const server = http.createServer((req, res) => {
             time: search.query.split('&')[1].split('=')[1]
         }
 
-        // Append market data to resObject and send to user
-        marketData.loadData(resObject);
-        res.write(JSON.stringify(resObject));
+        marketData.loadData(resObject.symbol)
+            .then((data) => {
+                resObject.data = data;
+
+                // Append market data to resObject and send to user
+                res.write(JSON.stringify(resObject));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
-
-    res.writeHead(200, {'Content-Type': contentType});
     res.end();
-
 });
 
 server.listen(PORT, 'localhost', (error) => {
 
     if (error) {
-        console.log('Something went wrong' + error);
+        console.log('Server error: ' + error);
     } else {
-        console.log('server is running!');
+        console.log('...');
     }
 
 });
