@@ -9,33 +9,14 @@ const PORT = process.env.PORT || 8080;
 
 const server = http.createServer((req, res) => {
 
-    // Determine extension of response based on request
     const extension = path.extname(req.url);
-    let contentType;
-
-    switch (extension) {
-        case '.css':
-            contentType = 'text/css';
-            break;
-        case '.js':
-            contentType = 'text/javascript';
-            break;
-        default:
-            contentType = 'text/html';
-            break;
-    }
-
     // CORS TODO: remove in prod
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.writeHead(200, {'Content-Type': contentType});
+    res.writeHead(200, {'Content-Type': 'text/html'});
 
     // Send different cases
-    if (req.url === '/') {
+    if (req.url === '/') res.write('<h1>this is the home page response</h1>');
 
-        res.write('<h1>this is the home page response</h1>');
-        console.log('home');
-
-    }
     else if (req.url !== '/favicon.ico') {
 
         let search = url.parse(req.url);
