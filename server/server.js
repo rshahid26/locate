@@ -35,9 +35,7 @@ const server = http.createServer((req, res) => {
                 resObject.data = data;
 
                 // Append market data to resObject and send to user
-                res.write(JSON.stringify(resObject, null, 2));
-            })
-            .then(() => {
+                res.write(JSON.stringify(resObject));
                 res.end();
             })
             .catch((err) => {
