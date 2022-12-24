@@ -1,7 +1,4 @@
 "use strict";
-
-dragElement(document.getElementsByClassName("window_outer")[0]);
-
 export function dragElement(div) {
     // Declare variables for mousedown and mousemove positions
     let x1 = 0, y1 = 0,

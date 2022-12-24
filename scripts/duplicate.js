@@ -1,12 +1,15 @@
 "use strict";
 import * as draggable from "./draggable.js";
 import {tickerCallback} from "./index.js";
+import {dragElement} from "./draggable.js";
 
 // Allow users to create multiple windows with Shift + c
 document.addEventListener("keydown", shiftDown);
 document.addEventListener("keyup", shiftUp);
 
 let keyHistory = [];
+
+dragElement(document.getElementsByClassName("window_outer")[0]);
 tickerCallback();
 
 // Run duplicate() while a string of 'c's follow the shift key
