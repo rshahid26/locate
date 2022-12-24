@@ -7,16 +7,7 @@ export function prepareData(element, ticker, time) {
     // Load dummy data
     //dummy(canvas);
 
-    stockMarketData(element, ticker, time);
-
-}
-
-function stockMarketData(element, ticker, time) {
-
-    // Navigate from element to the associated chart canvas
-    let canvas = element.parentElement.getElementsByClassName("chart_container")[0].lastElementChild;
-
-
+    //
 
 }
 

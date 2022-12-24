@@ -16,20 +16,14 @@ export function tickerCallback() {
             const url = `http://localhost:8080/query?ticker=${ticker}&time=${time}`;
 
             console.log("Request sent to " + url);
-            // Send a get request to the new URL
             fetch(url, {method: "GET"})
                 .then(response => {
-                    return JSON.stringify(response);
-                })
-                .then(data => {
-                    //prepareData.createChart(data);
+                    // Update UI
+                    prepareData(element, JSON.stringify(response));
                 })
                 .catch(error => {
                     console.log("Locate data: " + error);
                 });
-
-            // Retrieve market data
-            prepareData(element, ticker, time);
         })
 
     autoSelect();
