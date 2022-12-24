@@ -12,10 +12,13 @@ const server = http.createServer((req, res) => {
     const extension = path.extname(req.url);
     // CORS TODO: remove in prod
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.writeHead(200, {'Content-Type': 'text/html'});
+
 
     // Send different cases
-    if (req.url === '/') res.write('<h1>this is the home page response</h1>');
+    if (req.url === '/') {
+        res.write('<h1>this is the home page response</h1>');
+        res.end();
+    }
 
     else if (req.url !== '/favicon.ico') {
 
@@ -29,17 +32,18 @@ const server = http.createServer((req, res) => {
 
         marketData.loadData(resObject.symbol)
             .then((data) => {
-                resObject.data = JSON.stringify(data);
+                resObject.data = data;
 
                 // Append market data to resObject and send to user
-                console.log(resObject);
-                res.write(JSON.stringify(resObject));
+                res.write(JSON.stringify(resObject, null, 2));
+            })
+            .then(() => {
+                res.end();
             })
             .catch((err) => {
                 console.log(err);
             });
     }
-    res.end();
 });
 
 server.listen(PORT, 'localhost', (error) => {
