@@ -25,7 +25,7 @@ export function tickerCallback() {
                     prepareData(element, JSON.parse(resObject));
                 })
                 .catch(error => {
-                    console.log("Server market data: " + error);
+                    console.log("Server market data: ", error);
                 });
         })
 

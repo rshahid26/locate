@@ -15,6 +15,20 @@ export function prepareData(element, resObject) {
     createChart(canvas, resObject.data);
 }
 
+function createBars(data) {
+    var open = +randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
+    var close = +randomNumber(open * 0.95, open * 1.05).toFixed(2);
+    var high = +randomNumber(Math.max(open, close), Math.max(open, close) * 1.1).toFixed(2);
+    var low = +randomNumber(Math.min(open, close) * 0.9, Math.min(open, close)).toFixed(2);
+    return {
+        x: date.valueOf(),
+        o: open,
+        h: high,
+        l: low,
+        c: close
+    };
+}
+
 function dummy(canvas) {
 
     // Federal Reserve Economic Data API
@@ -37,13 +51,14 @@ function dummy(canvas) {
 var barCount = 60;
 var initialDateStr = '01 Apr 2017 00:00 Z';
 
-var canvas = document.getElementById('chart1').getContext('2d');
+//var canvas = document.getElementById('chart1').getContext('2d');
 
 let barData2 = {
 
 }
 var barData = getRandomData(initialDateStr, barCount);
 
+/*
 var chart = new Chart(canvas, {
     type: 'candlestick',
     data: {
@@ -53,6 +68,8 @@ var chart = new Chart(canvas, {
         }]
     }
 });
+
+ */
 
 var getRandomInt = function(max) {
     return Math.floor(Math.random() * Math.floor(max));
