@@ -13,20 +13,37 @@ export function prepareData(element, resObject) {
 
     console.log(resObject);
     createChart(canvas, resObject.data);
+
+    //createChart2(canvas, createBars(resObject.data));
 }
 
 function createBars(data) {
-    var open = +randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
-    var close = +randomNumber(open * 0.95, open * 1.05).toFixed(2);
-    var high = +randomNumber(Math.max(open, close), Math.max(open, close) * 1.1).toFixed(2);
-    var low = +randomNumber(Math.min(open, close) * 0.9, Math.min(open, close)).toFixed(2);
-    return {
-        x: date.valueOf(),
-        o: open,
-        h: high,
-        l: low,
-        c: close
-    };
+
+    let bars = [];
+    for (let i = 0; i < data.length; i++) {
+        bars[i] = {
+            x: data[i][0].split(' ')[1].valueOf(),
+            o: data[i][1],
+            h: data[i][2],
+            l: data[i][3],
+            c: data[i][4]
+        }
+    }
+
+    return bars;
+}
+
+function createChart2(canvas, bars) {
+
+    let chart = new Chart(canvas.getContext('2d'), {
+        type: 'candlestick',
+        data: {
+            datasets: [{
+                label: 'HKD',
+                data: bars
+            }]
+        }
+    });
 }
 
 function dummy(canvas) {
@@ -48,17 +65,15 @@ function dummy(canvas) {
         .catch(reject => console.log(reject));
 }
 
+/*
+
 var barCount = 60;
 var initialDateStr = '01 Apr 2017 00:00 Z';
 
-//var canvas = document.getElementById('chart1').getContext('2d');
+var canvas = document.getElementById('chart1').getContext('2d');
 
-let barData2 = {
-
-}
 var barData = getRandomData(initialDateStr, barCount);
 
-/*
 var chart = new Chart(canvas, {
     type: 'candlestick',
     data: {
@@ -68,7 +83,6 @@ var chart = new Chart(canvas, {
         }]
     }
 });
-
  */
 
 var getRandomInt = function(max) {
