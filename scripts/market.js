@@ -36,15 +36,6 @@ function createBars(data) {
     return bars;
 }
 
-function updateWidgets(element, bars) {
-
-    // Navigate from element to the associated widgets
-    let widgets = element.parentElement.getElementsByClassName("widget_container")[0].children;
-
-    widgets[0].innerHTML = ``;
-
-}
-
 function createChart(canvas, bars) {
 
     // Refresh canvas before upload (chart.js requirement)
@@ -58,6 +49,19 @@ function createChart(canvas, bars) {
                 data: bars
             }]
         }});
+}
+
+function updateWidgets(element, bars) {
+
+    // Navigate from element to the associated widgets
+    let widgets = element.parentElement.getElementsByClassName("widget_container")[0].children;
+
+    widgets[0].innerText = parseInt(bars[bars.length - 1].c).toFixed(2);
+    widgets[1].innerText = ((parseInt(bars[bars.length - 1].c) - parseInt(bars[0].c)) * 100 / parseInt(bars[0].c)).toFixed(2);
+    for (let i = 0; i < bars.length; i++) {
+
+
+    }
 }
 
 function dummy(canvas) {
