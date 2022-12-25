@@ -13,9 +13,11 @@ export function prepareData(element, resObject) {
 
     for (let key in resObject.data)
         resObject.data[key] = resObject.data[key].split(',');
-
     console.log(resObject);
-    createChart2(canvas, createBars(resObject.data));
+
+    const bars = createBars(resObject.data);
+    createChart(canvas, bars);
+    updateWidgets(element, bars);
 }
 
 function createBars(data) {
@@ -30,21 +32,32 @@ function createBars(data) {
             c: data[i][4]
         }
     }
-
     console.log(bars);
     return bars;
 }
 
-function createChart2(canvas, bars) {
-    return new Chart(canvas.getContext('2d'), {
+function updateWidgets(element, bars) {
+
+    // Navigate from element to the associated widgets
+    let widgets = element.parentElement.getElementsByClassName("widget_container")[0].children;
+
+    widgets[0].innerHTML = ``;
+
+}
+
+function createChart(canvas, bars) {
+
+    // Refresh canvas before upload (chart.js requirement)
+    canvas.outerHTML = `<canvas id=${canvas.id}>`;
+
+    return new Chart(canvas.id, {
         type: 'candlestick',
         data: {
             datasets: [{
                 label: 'Last Month',
                 data: bars
             }]
-        }
-    });
+        }});
 }
 
 function dummy(canvas) {
@@ -121,7 +134,7 @@ function getRandomData(dateStr, count) {
     return data;
 }
 
-function createChart(canvas, data) {
+function createAltChart(canvas, data) {
     let xValues = [];
     let yValues = [];
 
