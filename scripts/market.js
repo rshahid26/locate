@@ -1,4 +1,4 @@
-let iterator = 0;
+"use strict";
 export function prepareData(element, resObject) {
 
     // Navigate from element to the associated chart canvas
@@ -13,8 +13,6 @@ export function prepareData(element, resObject) {
 
     console.log(resObject);
     createChart(canvas, resObject.data);
-    //dummy(canvas);
-
 }
 
 function dummy(canvas) {
