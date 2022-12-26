@@ -3,14 +3,13 @@ import * as draggable from "./draggable.js";
 import {tickerCallback} from "./index.js";
 import {dragElement} from "./draggable.js";
 
+tickerCallback();
+dragElement(document.getElementsByClassName("window_outer")[0]);
+
 // Allow users to create multiple windows with Shift + c
+let keyHistory = [];
 document.addEventListener("keydown", shiftDown);
 document.addEventListener("keyup", shiftUp);
-
-let keyHistory = [];
-
-dragElement(document.getElementsByClassName("window_outer")[0]);
-tickerCallback();
 
 // Run duplicate() while a string of 'c's follow the shift key
 function shiftDown(e) {
@@ -48,16 +47,13 @@ function duplicate() {
     nextWindow = document.getElementsByClassName("window_outer")
         [document.getElementsByClassName("window_outer").length - 1];
 
-    // Update locate()
-    nextWindow.lastElementChild.getElementsByClassName('chart_container')[0]
-        .lastElementChild.id = `chart${++iterator}`;
-    tickerCallback();
-
-    // Set spawn coordinates
     nextWindow.style.top = "25%";
     nextWindow.style.left = "25%";
 
-    // Apply exported function draggable
+    // Update callbacks
+    nextWindow.lastElementChild.getElementsByClassName('chart_container')[0]
+        .lastElementChild.id = `chart${++iterator}`;
+    tickerCallback();
     draggable.dragElement(nextWindow);
 
 }

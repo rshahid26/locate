@@ -92,5 +92,5 @@ function dummy(canvas) {
         .then(data => {
             createChart(canvas, data);
         })
-        .catch(reject => console.log(reject));
+        .catch(reject => console.log("FRED error ", reject));
 }
