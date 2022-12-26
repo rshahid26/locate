@@ -31,8 +31,9 @@ function createBars(data) {
             l: data[i][3],
             c: data[i][4]
         }
+        //console.log(new Date(bars[i].x), bars[i]);
     }
-    console.log(bars);
+
     return bars;
 }
 
@@ -56,12 +57,23 @@ function updateWidgets(element, bars) {
     // Navigate from element to the associated widgets
     let widgets = element.parentElement.getElementsByClassName("widget_container")[0].children;
 
-    widgets[0].innerText = parseInt(bars[bars.length - 1].c).toFixed(2);
-    widgets[1].innerText = ((parseInt(bars[bars.length - 1].c) - parseInt(bars[0].c)) * 100 / parseInt(bars[0].c)).toFixed(2);
+    let intervalEnd = parseFloat(bars[0].c);
+    let intervalStart = parseFloat(bars[bars.length - 1].c);
+
+    widgets[0].innerText = intervalEnd.toFixed(2);
+    widgets[1].innerText = ((intervalEnd - intervalStart) * 100 / intervalStart).toFixed(2) + "%";
+
+    let intervalHigh = parseFloat(bars[0].h);
+    let intervalLow = parseFloat(bars[0].l);
+
     for (let i = 0; i < bars.length; i++) {
-
-
+        if (bars[i].h > intervalHigh) intervalHigh = bars[i].h;
+        if (bars[i].l < intervalLow) intervalLow = bars[i].l;
     }
+
+    widgets[2].children[1].innerText = 'H ' + intervalHigh;
+    widgets[2].children[2].innerText = 'L ' + intervalLow;
+
 }
 
 function dummy(canvas) {
