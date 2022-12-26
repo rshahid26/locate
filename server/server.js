@@ -3,6 +3,7 @@ const path = require('path');
 const url = require('url');
 const express = require('express');
 const marketData = require("./market-data");
+const locateData = require("./locate-data");
 
 // Development server
 const PORT = process.env.PORT || 8080;
@@ -12,7 +13,6 @@ const server = http.createServer((req, res) => {
     const extension = path.extname(req.url);
     // CORS TODO: remove in prod
     res.setHeader("Access-Control-Allow-Origin", "*");
-
 
     // Send different cases
     if (req.url === '/') {
@@ -40,6 +40,11 @@ const server = http.createServer((req, res) => {
             })
             .catch((err) => {
                 console.log(err);
+            });
+
+        locateData.main()
+            .catch((e) => {
+                console.log(e);
             });
     }
 });

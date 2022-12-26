@@ -13,7 +13,6 @@ function loadData(symbol) {
             json: false,
             headers: {'User-Agent': 'request'}
         }, (err, res, data) => {
-
             if (err || (res.statusCode !== 200)) {
                 console.log('Status:', res.statusCode + ' Error:', err);
                 reject(err);
