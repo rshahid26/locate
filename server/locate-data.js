@@ -6,9 +6,9 @@ const client = new MongoClient(uri, {
     useUnifiedTopology: true,
     serverApi: ServerApiVersion.v1
 });
-module.exports = {main, listDatabases};
+module.exports = {loadData, listDatabases};
 
-async function main() {
+async function loadData(symbol) {
     try {
         // Connect to the MongoDB cluster
         await client.connect();
@@ -23,7 +23,7 @@ async function main() {
 
 async function listDatabases(client) {
 
-    databasesList = await client.db().admin().listDatabases();
+    const databasesList = await client.db().admin().listDatabases();
 
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));

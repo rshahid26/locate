@@ -42,7 +42,7 @@ const server = http.createServer((req, res) => {
                 console.log(err);
             });
 
-        locateData.main()
+        locateData.loadData(resObject.symbol)
             .catch((e) => {
                 console.log(e);
             });
