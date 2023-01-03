@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
     <script src="chartjs-chart-financial.js"></script>
     <script src="/server/node_modules/chart.js/dist/chart.js" type="module"></script>
-    <!--<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>-->
     <script src="/server/node_modules/chartjs-plugin-zoom/dist/chartjs-plugin-zoom.min.js"></script>
 </head>
 <body>
@@ -19,7 +18,7 @@
 
         <form class="ticker_form" method="post">
             <div class="title_container">
-                <input type="text" class="ticker" placeholder="HKD" name="ticker" autocapitalize="on">
+                <input type="text" class="ticker" placeholder="HKD" name="ticker" autocapitalize="on" autocomplete="off">
                 <h1 class="title">AMTD Digital Inc. ADR</h1>
                 <div class="info">
                     <p>Search a database of over 500 questions about trading at Trillium</p>
