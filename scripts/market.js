@@ -48,14 +48,47 @@ function createChart(canvas, bars) {
     // Refresh canvas before upload (chart.js requirement)
     canvas.outerHTML = `<canvas id=${canvas.id}>`;
 
-    return new Chart(canvas.id, {
+    let chart = new Chart(canvas.id, {
         type: 'candlestick',
         data: {
             datasets: [{
                 label: 'Last Month',
-                data: bars
+                data: bars,
+                borderColor: 'rgb(0,0,0)',
+                tension: 1,
+                borderWidth: .01
             }]
-        }});
+        },
+        options: {
+            scales: {
+                x: {minRange: 50},
+                y: {minRange: 5}
+            },
+            plugins: {
+                zoom: {
+                    limits: {
+                        x: {min: 'original', max: 'original'},
+                        y: {min: 'original', max: 'original', minRange: 4}
+                    },
+                    zoom: {
+                        pan: {enabled: true, mode: 'xy',},
+                        wheel: {enabled: false, speed: 0.05},
+                        pinch: {enabled: false},
+                        mode: 'xy',
+                    }
+                }
+            },
+            onClick(e) {
+                const chart = e.chart;
+                chart.options.plugins.zoom.zoom.wheel.enabled = !chart.options.plugins.zoom.zoom.wheel.enabled;
+                chart.options.plugins.zoom.zoom.pinch.enabled = !chart.options.plugins.zoom.zoom.pinch.enabled;
+                chart.update();
+            }
+        }
+    });
+
+    console.log(chart);
+    return chart;
 }
 
 function updateWidgets(element, bars) {
