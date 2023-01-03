@@ -6,7 +6,7 @@ function loadData(symbol) {
     return new Promise((resolve, reject) => {
 
         const key = "CKEJIMJVB8FKOX6D";
-        const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=daily&apikey=${key}`;
+        const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=${symbol}&interval=30min&apikey=${key}`;
 
         request.get({
             url: url,
