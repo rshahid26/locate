@@ -99,23 +99,6 @@ h3 {
     flex-direction: row;
 }
 
-.subtitle {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
-    font-size: 80%;
-
-    border-bottom-color: #6C6C6C;
-    border-right-color: #6C6C6C;
-    border-top-color: #FFFFFF;
-    border-left-color: #FFFFFF;
-
-    color: #1c3060;
-    flex: 2 1 0;
-}
-
 .offset {
     /*border: 1px solid royalblue;*/
     flex: 4 1 0;

@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
     <script src="chartjs-chart-financial.js"></script>
+    <script src="server/node_modules/hammerjs/hammer.min.js"></script>
     <script src="/server/node_modules/chart.js/dist/chart.js" type="module"></script>
     <script src="/server/node_modules/chartjs-plugin-zoom/dist/chartjs-plugin-zoom.min.js"></script>
 </head>
@@ -39,7 +40,7 @@
         </div>
 
         <div class="chart_container">
-            <canvas id="chart1"></canvas>
+            <canvas id="chart1" style="overflow-x: scroll"></canvas>
         </div>
 
         <div class="indicator_container">

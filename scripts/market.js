@@ -47,7 +47,7 @@ function createChart(canvas, bars) {
     // Refresh canvas before upload (chart.js requirement)
     canvas.outerHTML = `<canvas id=${canvas.id}>`;
 
-    return new Chart(canvas.id, {
+    let chart = new Chart(canvas.id, {
         type: 'candlestick',
         data: {
             datasets: [{
@@ -65,12 +65,16 @@ function createChart(canvas, bars) {
                         x: {min: 'original', max: 'original', minRange: 60 * 3_000_000},
                         y: {min: 'original', max: 'original', minRange: 4}
                     },
+                    pan: {
+                        enabled: true,
+                        mode: 'xy',
+                    },
                     zoom: {
-                        pan: {enabled: false, mode: 'xy'},
                         wheel: {enabled: true, speed: 0.02},
                         pinch: {enabled: true},
-                        mode: 'xy',
+                        mode: 'xy'
                     }}}}});
+    return chart;
 }
 
 function updateTitle(element, symbol) {

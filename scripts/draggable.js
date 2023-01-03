@@ -6,7 +6,7 @@ export function dragElement(div) {
         x2 = 0, y2 = 0;
 
     div.onmousedown = dragMouse;
-
+    
     function dragMouse(e) {
         e.preventDefault();
 
@@ -15,15 +15,16 @@ export function dragElement(div) {
         y1 = e.clientY;
 
         // Exclude some parts of the window from listeners
-        //for (let ticker of document.getElementsByClassName("ticker")) excludeArea(x1, y1, ticker);
-        for (let canvas of document.getElementsByTagName("canvas")) excludeArea(x1, y1, canvas);
+        if (!excludeArea(x1, y1, div.getElementsByClassName("ticker")[0]) &&
+            !excludeArea(x1, y1, div.getElementsByClassName("chart_container")[0])) {
 
-        // Call functions based on cursor movement
-        document.onmousemove = elementDrag;
-        document.onmouseup = endDraggable;
+            // Call functions based on cursor movement
+            document.onmousemove = drag;
+            document.onmouseup = endDraggable;
+        }
     }
 
-    function elementDrag(e) {
+    function drag(e) {
         e.preventDefault();
 
         // Obtain new coordinates and their distances from the original
@@ -36,11 +37,11 @@ export function dragElement(div) {
         div.style.top = (div.offsetTop - y2) + "px";
         div.style.left = (div.offsetLeft - x2) + "px";
     }
+}
 
-    function endDraggable() {
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
+function endDraggable() {
+    document.onmouseup = null;
+    document.onmousemove = null;
 }
 
 function excludeArea(x1, y1, element) {
@@ -57,6 +58,6 @@ function excludeArea(x1, y1, element) {
         yDead < element.getBoundingClientRect().height) {
 
         element.focus();
-        return -1;
+        return true;
     }
 }
