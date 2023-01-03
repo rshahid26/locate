@@ -56,19 +56,19 @@ function createChart(canvas, bars) {
                 data: bars,
                 borderColor: 'rgb(0,0,0)',
                 tension: .1,
-                borderWidth: .01
+                borderWidth: .01,
             }]
         },
         options: {
             plugins: {
                 zoom: {
                     limits: {
-                        x: {min: 'original', max: 'original'},
+                        x: {min: 'original', max: 'original', minRange: 60 * 3_000_000},
                         y: {min: 'original', max: 'original', minRange: 4}
                     },
                     zoom: {
                         pan: {enabled: false, mode: 'xy'},
-                        wheel: {enabled: false, speed: 0.05},
+                        wheel: {enabled: false, speed: 0.02},
                         pinch: {enabled: false},
                         mode: 'xy',
                     }
