@@ -14,29 +14,13 @@ export function dragElement(div) {
         x1 = e.clientX;
         y1 = e.clientY;
 
-        // Ensure mouse position is not in a ticker box
-        for (let ticker of document.getElementsByClassName("ticker")) {
-
-            // Assign distance relative to ticker coordinates if appropriate
-            let xDead = x1 > ticker.getBoundingClientRect().x ?
-                x1 - ticker.getBoundingClientRect().x : undefined;
-
-            let yDead = y1 > ticker.getBoundingClientRect().y ?
-                y1 - ticker.getBoundingClientRect().y : undefined;
-
-            // Compare distances with width/height of any ticker box (all identical)
-            if (xDead < ticker.getBoundingClientRect().width &&
-                yDead < ticker.getBoundingClientRect().height) {
-
-                ticker.focus();
-                return -1;
-
-            }
-        }
+        // Exclude some parts of the window from listeners
+        //for (let ticker of document.getElementsByClassName("ticker")) excludeArea(x1, y1, ticker);
+        for (let canvas of document.getElementsByTagName("canvas")) excludeArea(x1, y1, canvas);
 
         // Call functions based on cursor movement
-        document.onmouseup = endDraggable;
         document.onmousemove = elementDrag;
+        document.onmouseup = endDraggable;
     }
 
     function elementDrag(e) {
@@ -56,5 +40,23 @@ export function dragElement(div) {
     function endDraggable() {
         document.onmouseup = null;
         document.onmousemove = null;
+    }
+}
+
+function excludeArea(x1, y1, element) {
+
+    // Assign distance relative to element coordinates if appropriate
+    let xDead = x1 > element.getBoundingClientRect().x ?
+        x1 - element.getBoundingClientRect().x : undefined;
+
+    let yDead = y1 > element.getBoundingClientRect().y ?
+        y1 - element.getBoundingClientRect().y : undefined;
+
+    // Compare distances with width/height of any element box (all identical)
+    if (xDead < element.getBoundingClientRect().width &&
+        yDead < element.getBoundingClientRect().height) {
+
+        element.focus();
+        return -1;
     }
 }
