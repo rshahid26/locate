@@ -59,6 +59,21 @@ function createChart(canvas, bars) {
             }]
         },
         options: {
+            /*
+            scales: {
+                x: {
+                    type: 'time',
+                    ticks: {
+                        autoSkip: true,
+                        autoSkipPadding: 50,
+                        maxRotation: 0
+                    },
+                },
+                y: {
+                    type: 'linear'
+                },
+            },
+             */
             plugins: {
                 zoom: {
                     limits: {
@@ -68,6 +83,7 @@ function createChart(canvas, bars) {
                     pan: {
                         enabled: true,
                         mode: 'xy',
+                        threshold: 5
                     },
                     zoom: {
                         wheel: {enabled: true, speed: 0.02},
