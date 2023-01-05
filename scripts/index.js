@@ -49,3 +49,7 @@ function autoSelect() {
             element.select();
         })
 }
+
+function reset() {
+
+}

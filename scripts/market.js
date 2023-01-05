@@ -97,7 +97,7 @@ function updateTitle(element, symbol) {
 
     // Navigate from element to the associated widgets
     let title = element.getElementsByClassName("title")[0];
-    title.innerText = `${symbol}`;
+    title.innerText = `${symbol}/LOCATE 1MTH`;
 
 }
 
@@ -124,6 +124,7 @@ function updateWidgets(element, bars) {
     widgets[2].children[2].innerText = 'L ' + intervalLow.toFixed(2);
     widgets[2].children[3].innerText = 'C ' + intervalEnd.toFixed(2);
 
+    for (let i = 0; i < 2; i++) intervalEnd < intervalStart ? widgets[i].style.color = 'red' : widgets[i].style.color = 'green';
 }
 
 function dummy(canvas) {
