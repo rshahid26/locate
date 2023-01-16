@@ -6,22 +6,22 @@ import {dragElement} from "./draggable.js";
 tickerCallback();
 dragElement(document.getElementsByClassName("window_outer")[0]);
 
-// Allow users to create multiple windows with Shift + c
+// Allow users to create multiple windows with Ctrl + c
 let keyHistory = [];
-document.addEventListener("keydown", shiftDown);
-document.addEventListener("keyup", shiftUp);
+document.addEventListener("keydown", ctrlDown);
+document.addEventListener("keyup", ctrlUp);
 
-// Run duplicate() while a string of 'c's follow the shift key
-function shiftDown(e) {
+// Run duplicate() while a string of 'c's follow the Ctrl key
+function ctrlDown(e) {
 
-    if (e.code === "ShiftLeft" || e.code === "ShiftRight")
-        keyHistory.push("shift");
+    if (e.code === "ControlLeft" || e.code === "MetaLeft")
+        keyHistory.push("ctrl");
 
     else if (e.code === "KeyC") {
 
         keyHistory.push(e.code);
         for (let i = keyHistory.length - 1; i >= 1; i--) {
-            if (keyHistory[i] === "KeyC" && keyHistory[i-1] === "shift")
+            if (keyHistory[i] === "KeyC" && keyHistory[i-1] === "ctrl")
                 duplicate();
         }
     }
@@ -29,9 +29,9 @@ function shiftDown(e) {
     else keyHistory = [];
 }
 
-// Reset the key history when shift is unpressed
-function shiftUp(e) {
-    if (e.code === "ShiftLeft" || e.code === "ShiftRight")
+// Reset the key history when Ctrl is unpressed
+function ctrlUp(e) {
+    if (e.code === "ControlLeft" || e.code === "MetaLeft")
         keyHistory = [];
 }
 
