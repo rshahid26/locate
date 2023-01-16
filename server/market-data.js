@@ -1,6 +1,6 @@
 'use strict';
 const request = require('request');
-module.exports = {loadData};
+module.exports = {loadData, loadTitle};
 
 function loadData(symbol) {
     return new Promise((resolve, reject) => {
@@ -58,5 +58,6 @@ function parseTitle(body, symbol) {
             return body.substring(origin - i + tag.length, origin - 1);
     }
 
+    console.log("not found!");
     return symbol + " Unknown";
 }

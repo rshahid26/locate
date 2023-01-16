@@ -23,31 +23,27 @@ const server = http.createServer((req, res) => {
     else if (req.url !== '/favicon.ico') {
 
         let search = url.parse(req.url);
-        console.log(search);
+        console.log(search.query);
 
         let resObject = {
             symbol: search.query.split('&')[0].split('=')[1],
             time: search.query.split('&')[1].split('=')[1]
         }
-
-        marketData.loadData(resObject.symbol)
-            .then((data) => {
-                resObject.data = data;
-
-                // Append market data to resObject and send to user
-                res.write(JSON.stringify(resObject));
-                res.end();
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-
-        locateData.loadData(resObject.symbol)
-            .catch((e) => {
-                console.log(e);
-            });
+        load(res, resObject).catch((err) => {console.log(err)});
     }
 });
+
+async function load(res, resObject) {
+
+    resObject.title = await marketData.loadTitle(resObject.symbol);
+    resObject.data = await marketData.loadData(resObject.symbol);
+    resObject.locate = await locateData.loadData(resObject.symbol);
+
+    // Append market data to resObject and send to user
+    res.write(JSON.stringify(resObject));
+    res.end();
+
+}
 
 server.listen(PORT, 'localhost', (error) => {
 

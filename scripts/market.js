@@ -16,10 +16,11 @@ export function prepareData(element, resObject) {
         if (intraDayTime < 930 || intraDayTime > 1600) delete resObject.data[key];
     }
     resObject.data = resObject.data.filter(n => n);
+    console.log(resObject);
 
     let bars = createBars(resObject.data);
     createChart(canvas, bars);
-    updateTitle(element, resObject.symbol);
+    updateTitle(element, resObject.title);
     updateWidgets(element, bars);
 
 }
@@ -93,11 +94,11 @@ function createChart(canvas, bars) {
     return chart;
 }
 
-function updateTitle(element, symbol) {
+function updateTitle(element, title) {
 
     // Navigate from element to the associated widgets
-    let title = element.getElementsByClassName("title")[0];
-    title.innerText = `${symbol}/LOCATE 1MTH`;
+    let titleContainer = element.getElementsByClassName("title")[0];
+    titleContainer.innerText = `${title}`;
 
 }
 
