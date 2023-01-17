@@ -1,11 +1,9 @@
 html {
     font-family: ".AppleSystemUIFont", sans-serif;
 }
-
 .window_outer {
-    width: 420px !important;
+    width: 450px !important;
 
-    padding: 20px 20px 20px 20px;
     justify-content: center;
     border: 2px solid darkgrey;
 
@@ -19,15 +17,14 @@ html {
     transform: translate(-50%, -50%);
 }
 .window_inner {
+    padding: 20px;
 }
-
-.window_outer:hover {
+.window_inner:hover {
     cursor: grab;
 }
-.window_outer:active {
+.window_inner:active {
     cursor: grabbing;
 }
-
 .title_container {
     display: flex;
 }
@@ -74,8 +71,8 @@ input {
     flex: 1 1 0;
 }
 
-.chart_container {
-
+.chart_container:hover {
+    cursor: crosshair;
 }
 .chart {
     width: 400px;
@@ -282,10 +279,12 @@ h3 {
 
 .window_outer:hover .window_inner:after {
     width: calc(100% + 2px);
+    cursor: ns-resize;
     transition: 100ms width ease 200ms;
 }
 
 .window_outer:hover .window_inner:before {
     height: calc(100% + 2px);
+    cursor: ew-resize;
     transition: 100ms height ease 300ms;
 }

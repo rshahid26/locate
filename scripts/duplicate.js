@@ -1,10 +1,12 @@
 "use strict";
-import * as draggable from "./draggable.js";
 import {tickerCallback} from "./index.js";
+import * as draggable from "./draggable.js";
 import {dragElement} from "./draggable.js";
+import {resizeElement} from "./resizable.js";
 
 tickerCallback();
 dragElement(document.getElementsByClassName("window_outer")[0]);
+resizeElement(document.getElementsByClassName("window_outer")[0]);
 
 // Allow users to create multiple windows with Ctrl + c
 let keyHistory = [];
@@ -54,6 +56,9 @@ function duplicate() {
     nextWindow.lastElementChild.getElementsByClassName('chart_container')[0]
         .lastElementChild.id = `chart${++iterator}`;
     tickerCallback();
-    draggable.dragElement(nextWindow);
+    dragElement(nextWindow);
+    resizeElement(nextWindow);
+
+
 
 }
