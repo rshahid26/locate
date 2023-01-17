@@ -1,11 +1,29 @@
 html {
     font-family: ".AppleSystemUIFont", sans-serif;
 }
+.test {
+    min-height: 80px;
+    min-width: 80px;
+    resize: both;
+    overflow: auto;
+
+    border: solid 1px black;
+
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    margin: 0 -50% 0 auto;
+    transform: translate(-20%, -20%);
+
+}
 .window_outer {
-    width: 450px !important;
+    min-width: 450px;
+    min-height: 300px;
+    resize: both;
+    overflow: auto;
 
     justify-content: center;
-    border: 2px solid darkgrey;
+    border: 2px solid black;
 
     background-size: 100%;
     background-color: ghostwhite;
@@ -15,6 +33,7 @@ html {
     left: 50%;
     margin: 0 -50% 0 auto;
     transform: translate(-50%, -50%);
+
 }
 .window_inner {
     padding: 20px;

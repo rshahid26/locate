@@ -5,8 +5,8 @@ import {dragElement} from "./draggable.js";
 import {resizeElement} from "./resizable.js";
 
 tickerCallback();
-dragElement(document.getElementsByClassName("window_outer")[0]);
-resizeElement(document.getElementsByClassName("window_outer")[0]);
+dragElement(document.getElementsByClassName("widget_container")[0]);
+//resizeElement(document.getElementsByClassName("window_outer")[0]);
 
 // Allow users to create multiple windows with Ctrl + c
 let keyHistory = [];

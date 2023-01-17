@@ -15,13 +15,17 @@ export function dragElement(div) {
         y1 = e.clientY;
 
         // Exclude some parts of the window from listeners
+        /*
         if (!excludeArea(x1, y1, div.getElementsByClassName("ticker")[0]) &&
-            !excludeArea(x1, y1, div.getElementsByClassName("chart_container")[0])) {
+            !excludeArea(x1, y1, div.getElementsByClassName("chart_container")[0]) &&
+            !excludeResize(x1, y1, div)) {
 
+         */
+        console.log("dragMouse");
             // Call functions based on cursor movement
             document.onmousemove = drag;
             document.onmouseup = endDraggable;
-        }
+
     }
 
     function drag(e) {
@@ -34,8 +38,9 @@ export function dragElement(div) {
         y1 = e.clientY;
 
         // Set the element's new position accordingly
-        div.style.top = (div.offsetTop - y2) + "px";
-        div.style.left = (div.offsetLeft - x2) + "px";
+        let element = div.parentElement.parentElement;
+        element.style.top = (element.offsetTop - y2) + "px";
+        element.style.left = (element.offsetLeft - x2) + "px";
     }
 }
 
@@ -60,4 +65,18 @@ function excludeArea(x1, y1, element) {
         element.focus();
         return true;
     }
+}
+
+function excludeResize(x1, y1, div) {
+
+    // Assign distance relative to bottom-right coordinates if appropriate
+    let xDead = x1 < div.getBoundingClientRect().right ?
+        div.getBoundingClientRect().right - x1 : undefined;
+
+    let yDead = y1 < div.getBoundingClientRect().bottom ?
+        div.getBoundingClientRect().bottom - y1 : undefined;
+
+    // Compare distances with width/height of resize icon
+    if (xDead < 19 && yDead < 19) return true;
+
 }
