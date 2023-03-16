@@ -1,4 +1,5 @@
 "use strict";
+let iterator = 1;
 
 export function dragElement(div) {
     // Declare variables for mousedown and mousemove positions
@@ -9,23 +10,21 @@ export function dragElement(div) {
     
     function dragMouse(e) {
         e.preventDefault();
+        riseToTop(div);
 
         // Get the mouse cursor position at startup
         x1 = e.clientX;
         y1 = e.clientY;
 
         // Exclude some parts of the window from listeners
-        /*
         if (!excludeArea(x1, y1, div.getElementsByClassName("ticker")[0]) &&
-            !excludeArea(x1, y1, div.getElementsByClassName("chart_container")[0]) &&
-            !excludeResize(x1, y1, div)) {
+            !excludeArea(x1, y1, div.getElementsByClassName("chart_container")[0])) {
 
-         */
-        console.log("dragMouse");
             // Call functions based on cursor movement
             document.onmousemove = drag;
             document.onmouseup = endDraggable;
 
+        }
     }
 
     function drag(e) {
@@ -38,7 +37,7 @@ export function dragElement(div) {
         y1 = e.clientY;
 
         // Set the element's new position accordingly
-        let element = div.parentElement.parentElement;
+        let element = div.parentElement;
         element.style.top = (element.offsetTop - y2) + "px";
         element.style.left = (element.offsetLeft - x2) + "px";
     }
@@ -67,16 +66,6 @@ function excludeArea(x1, y1, element) {
     }
 }
 
-function excludeResize(x1, y1, div) {
-
-    // Assign distance relative to bottom-right coordinates if appropriate
-    let xDead = x1 < div.getBoundingClientRect().right ?
-        div.getBoundingClientRect().right - x1 : undefined;
-
-    let yDead = y1 < div.getBoundingClientRect().bottom ?
-        div.getBoundingClientRect().bottom - y1 : undefined;
-
-    // Compare distances with width/height of resize icon
-    if (xDead < 19 && yDead < 19) return true;
-
+function riseToTop(div) {
+    div.parentElement.style.zIndex = `${iterator++}`;
 }

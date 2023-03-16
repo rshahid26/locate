@@ -18,9 +18,10 @@ html {
 }
 .window_outer {
     min-width: 450px;
-    min-height: 300px;
-    resize: both;
+    max-width: 900px;
+    resize: horizontal;
     overflow: auto;
+    height: fit-content !important;
 
     justify-content: center;
     border: 2px solid black;
@@ -33,7 +34,7 @@ html {
     left: 50%;
     margin: 0 -50% 0 auto;
     transform: translate(-50%, -50%);
-
+    z-index: 9;
 }
 .window_inner {
     padding: 20px;
@@ -89,14 +90,12 @@ input {
     margin: 2px 0 2px 0;
     flex: 1 1 0;
 }
-
+.chart_container {
+    height: fit-content;
+}
 .chart_container:hover {
     cursor: crosshair;
 }
-.chart {
-    width: 400px;
-}
-
 h3 {
     padding-right:30px;
     color: red;
@@ -298,12 +297,10 @@ h3 {
 
 .window_outer:hover .window_inner:after {
     width: calc(100% + 2px);
-    cursor: ns-resize;
     transition: 100ms width ease 200ms;
 }
 
 .window_outer:hover .window_inner:before {
     height: calc(100% + 2px);
-    cursor: ew-resize;
     transition: 100ms height ease 300ms;
 }
