@@ -32,12 +32,11 @@ const server = http.createServer((req, res) => {
         load(res, resObject).catch((err) => {console.log(err)});
     }
 });
-
 async function load(res, resObject) {
 
     resObject.title = await marketData.loadTitle(resObject.symbol);
     resObject.data = await marketData.loadData(resObject.symbol);
-    //resObject.locate = await locateData.loadData(resObject.symbol);
+    resObject.locate = await locateData.loadData(resObject.symbol);
 
     // Append market data to resObject and send to user
     res.write(JSON.stringify(resObject));

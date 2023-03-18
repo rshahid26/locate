@@ -36,6 +36,7 @@ function ctrlUp(e) {
 
 let iterator = 1;
 function duplicate() {
+    if (iterator === 4) return false;
 
     let nextWindow = document.getElementsByClassName("window_outer")
         [document.getElementsByClassName("window_outer").length - 1];

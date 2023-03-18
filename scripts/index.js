@@ -15,13 +15,11 @@ export function tickerCallback() {
             const time = "DAY";
             const url = `http://localhost:8080/query?ticker=${ticker}&time=${time}`;
 
-            console.log("Request sent to " + url);
             fetch(url, {method: "GET"})
                 .then(response => {
                     return response.text();
                 })
                 .then(resObject => {
-                    // Update UI
                     prepareData(element, JSON.parse(resObject));
                 })
                 .catch(error => {

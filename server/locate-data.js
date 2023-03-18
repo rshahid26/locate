@@ -1,21 +1,24 @@
 const {MongoClient, ServerApiVersion} = require('mongodb');
+const request = require("request");
+const fs = require("fs");
 
-const uri = "mongodb+srv://locate:rs@locate-data.2i4pybo.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, {
+const URI = "mongodb+srv://rshahid26:6DB2EUxyzwvtTpMK@locate-data.2i4pybo.mongodb.net/data?retryWrites=true&w=majority";
+
+const client = new MongoClient(URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     serverApi: ServerApiVersion.v1
 });
 module.exports = {loadData, listDatabases};
 
-//loadData('GME');
 async function loadData(symbol) {
     try {
+
         // Connect to the MongoDB cluster
         await client.connect();
-        await listDatabases(client);
+        const data = await client.db().collection(symbol).find().toArray();
 
-        //console.log(client.db().listCollections());
+        console.log(data);
 
     } catch (e) {
         console.error(e);
